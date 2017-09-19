@@ -1,0 +1,108 @@
+<div class="off-canvas-sidebar">
+  <%= render 'layouts/header' %>
+  <div class="wrapper wrapper-full-page">
+    <div class="full-page register-page" filter-color="black" data-image="<%= image_path('register.jpeg') %>>">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="card card-signup">
+              <h2 class="card-title text-center">Register for GT Connect</h2>
+              <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                  <div class="info info-horizontal">
+                    <div class="icon icon-rose">
+                      <i class="material-icons">event</i>
+                    </div>
+                    <div class="description">
+                      <h4 class="info-title">MyGT</h4>
+                      <p class="description">
+                        The most up to date announcements from the ministries you're involved with.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="info info-horizontal">
+                    <div class="icon icon-primary">
+                      <i class="material-icons">email</i>
+                    </div>
+                    <div class="description">
+                      <h4 class="info-title">The Weekly</h4>
+                      <p class="description">
+                        A weekly email highlighting the things God is doing,and upcoming events relevant to you.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="info info-horizontal">
+                    <div class="icon icon-info">
+                      <i class="material-icons">group_add</i>
+                    </div>
+                    <div class="description">
+                      <h4 class="info-title">Connect</h4>
+                      <p class="description">
+                        Share what God is doing in your life, and be encouraged by what God is doing in our community.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= devise_error_messages! %>
+                    <form class="form" method="" action="">
+                      <div class="card-content">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">email</i>
+                          </span>
+                          <%= f.text_field :first_name, autofocus: true, class: 'form-control', placeholder: 'First name...' %>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">email</i>
+                          </span>
+                          <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name...' %>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">email</i>
+                          </span>
+                          <%= f.email_field :email, class: 'form-control', placeholder: 'Email...' %>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password...' %>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="material-icons">lock_outline</i>
+                          </span>
+                          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password confirmation...' %>
+                        </div>
+                      </div>
+                      <div class="footer text-center">
+                        <%= f.submit "Register", class: 'btn btn-primary btn-round' %>
+                      </div>
+                    </form>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <nav class="pull-left">
+            <ul>
+              <li>
+                <a href="#">
+                  Home
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
