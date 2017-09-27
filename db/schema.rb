@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919024314) do
+ActiveRecord::Schema.define(version: 20170927180107) do
+
+  create_table "memory_verses", force: :cascade do |t|
+    t.string "verse"
+    t.string "reference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "verse_date"
+  end
+
+  create_table "ministries", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

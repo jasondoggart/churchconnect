@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ministries
+  resources :memory_verses
   get 'users/show'
 
   devise_for :users

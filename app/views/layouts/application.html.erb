@@ -21,6 +21,10 @@
 
   <body>
     <% flash.each do |message_type, message| %>
+      <script type="text/javascript">
+        showNotification('top', 'right', '<%= message %>')
+      </script>
+      <!--
       <div class="alert alert-info">
         <div class="container-fluid">
           <div class="alert-icon">
@@ -32,6 +36,7 @@
           <b><%= message %></b>
         </div>
       </div>
+      -->
     <% end %>
     <%= yield %>
   </body>

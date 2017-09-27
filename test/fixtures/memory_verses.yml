@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  verse: A memory verse
+  reference: Reference
+  verse_date: "2017-09-25"
+
+two:
+  verse: The second memory verse
+  reference: Reference 2
+  verse_date: "2017-09-18"
+
+three:
+  verse: The third memory verse
+  reference: Reference 3
+  verse_date: "2017-09-11"
+
+most_recent:
+  verse: The most recent verse
+  reference: Reference 4
+  verse_date: <%= Time.zone.now %>
+

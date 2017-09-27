@@ -26,3 +26,18 @@ $(document).on('turbolinks:load', function() {
   }, 700)
 });
 
+function showNotification(from, align, message){
+
+    $.notify({
+        icon: "add_alert",
+        message: message
+
+    },{
+        type: 'success',
+        timer: 4000,
+        placement: {
+            from: from,
+            align: align
+        }
+    });
+}

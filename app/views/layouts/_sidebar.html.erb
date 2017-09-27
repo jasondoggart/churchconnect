@@ -5,11 +5,11 @@
       Tip 3: you can change the color of the sidebar with data-background-color="white | black"
     -->
     <div class="logo">
-      <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-        GT
+      <a href="#" class="simple-text logo-mini">
+        
       </a>
-      <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-        Connect
+      <a href="#" class="simple-text logo-normal">
+        GT Connect
       </a>
     </div>
     <div class="sidebar-wrapper">
@@ -51,10 +51,9 @@
         </div>
         <ul class="nav">
           <li class="active">
-            <a href="./dashboard.html">
+            <%= link_to '
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
+              <p>Dashboard</p>'.html_safe, users_show_path %>
           </li>
           <li>
             <a data-toggle="collapse" href="#pagesExamples">
@@ -89,9 +88,20 @@
                     <span class="sidebar-normal">Creative Arts</span>
                   </a>
                 </li>
+                <li>
+                  <a href="./pages/register.html">
+                    <span class="sidebar-mini">A</span>
+                    <span class="sidebar-normal">See All Ministries</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>
+        </li>
+        <li>
+          <%= link_to '
+            <i class="material-icons">bookmark</i>
+            <p>Memory Verses</p>'.html_safe, memory_verses_path %>
         </li>
         <li>
           <a href="./widgets.html">
