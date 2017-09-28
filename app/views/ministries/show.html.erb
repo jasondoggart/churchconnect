@@ -29,10 +29,37 @@
                 <h4 class="card-title">
                   Upcoming Events<br />
                   <p class="category">See all events</p>
+                  <%= link_to '<p class="category">Add new</p>'.html_safe, new_event_path %>
                 </h4>
               </div>
               <div class="card-content">
-                list upcoming events for the ministry here
+                <% @ministry.events.each do |event| %>
+                  <div class="col-md-4">
+                    <div class="card card-product">
+                      <div class="card-image" data-header-animation="false">
+                        <a href="#pablo">
+                          <img class="img" src="<%= image_path('card-2.jpeg') %>">
+                        </a>
+                      </div>
+                      <div class="card-content">
+                        <h4 class="card-title">
+                          <%= link_to event.name, event_path(event) %>
+                        </h4>
+                        <div class="card-description">
+                          <%= event.description %>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="price">
+                          <h4>Will insert dates here</h4>
+                        </div>
+                        <div class="stats pull-right">
+                          <p class="category"><i class="material-icons">place</i><%= @ministry.name %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>

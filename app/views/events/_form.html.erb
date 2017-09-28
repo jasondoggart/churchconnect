@@ -1,0 +1,61 @@
+<%= form_for @event do |form| %>
+  <% if @event.errors.any? %>
+    <h2><%= pluralize(@event.errors.count, "error") %> need to be corrected to proceed.</h2>
+    <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Event Name</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.text_field :name, id: :event_name, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Description</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.text_field :description, id: :event_description, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Event Start Time</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.text_field :start_time, id: :event_start_time, class: 'form-control datetimepicker', value: Time.zone.now %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Event End Time</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.text_field :end_time, id: :event_end_time, class: 'form-control datetimepicker', value: Time.zone.now %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Ministry</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.collection_select :ministry_id, @ministries, :id, :name, placeholder: 'Choose Ministry', class: 'selectpicker' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <label class="col-md-3 label-on-left"></label>
+    <div class="form-group form-button">
+      <%= form.submit @event.new_record? ? "Create Event" : "Update Event", class: 'btn btn-fill btn-rose' %>
+    </div>
+  </div>
+<% end %>

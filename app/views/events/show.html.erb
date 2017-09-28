@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <%= render 'layouts/sidebar' %>
+  <div class="main-panel">
+    <%= render 'layouts/dashboard_nav' %>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="card card-profile">
+              <div class="card-avatar">
+                <%= image_tag('faces/marc.jpg') %>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">
+                  <%= @event.name %>
+                </h4>
+                <p class="description">
+                  <%= @event.description %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
