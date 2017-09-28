@@ -1,14 +1,75 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @ministry.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @ministry.description %>
-</p>
-
-<%= link_to 'Edit', edit_ministry_path(@ministry) %> |
-<%= link_to 'Back', ministries_path %>
+<div class="wrapper">
+  <%= render 'layouts/sidebar' %>
+  <div class="main-panel">
+    <%= render 'layouts/dashboard_nav' %>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <div class="card card-profile">
+              <div class="card-avatar">
+                <%= image_tag('faces/marc.jpg') %>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title">
+                  <%= @ministry.name %>
+                </h4>
+                <p class="description">
+                  <%= @ministry.description %>
+                </p>
+                <%= link_to 'Follow', '#', class: 'btn btn-rose btn-round' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header" data-background-color="green">
+                <h4 class="card-title">
+                  Upcoming Events<br />
+                  <p class="category">See all events</p>
+                </h4>
+              </div>
+              <div class="card-content">
+                list upcoming events for the ministry here
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header" data-background-color="green">
+                <h4 class="card-title">
+                  Recent Announcements<br />
+                  <p class="category">See all Announcements</p>
+                </h4>
+              </div>
+              <div class="card-content">
+                list new announcements for the ministry here
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header" data-background-color="green">
+                <h4 class="card-title">
+                  Opportunities to Serve<br />
+                  <p class="category">See all Opportunities</p>
+                </h4>
+              </div>
+              <div class="card-content">
+                list new announcements for the ministry here
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
