@@ -1,27 +1,36 @@
-<%= form_with(model: ministry, local: true) do |form| %>
-  <% if ministry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ministry.errors.count, "error") %> prohibited this ministry from being saved:</h2>
-
-      <ul>
-      <% ministry.errors.full_messages.each do |message| %>
+<%= form_for @ministry do |form| %>
+  <% if @ministry.errors.any? %>
+    <h2><%= pluralize(@ministry.errors.count, "error") %> need to be corrected to proceed.</h2>
+    <ul>
+      <% @ministry.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :ministry_name %>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Ministry Name</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.text_field :name, id: :ministry_name, class: 'form-control' %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :ministry_description %>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Ministry Description</label>
+    <div class="col-md-9">
+      <div class="form-group label-floating is-empty">
+        <label class="control-label"></label>
+        <%= form.text_field :description, id: :ministry_description, class: 'form-control' %>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row">
+    <label class="col-md-3 label-on-left"></label>
+    <div class="col-md-9">
+      <div class="form-group form-button">
+        <%= form.submit @ministry.new_record? ? "Add Ministry" : "Update Ministry", class: 'btn btn-fill btn-rose' %>
+      </div>
+    </div>
   </div>
 <% end %>

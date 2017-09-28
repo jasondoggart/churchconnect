@@ -5,30 +5,35 @@ class MinistriesController < ApplicationController
   # GET /ministries.json
   def index
     @ministries = Ministry.all
+    @user = current_user
   end
 
   # GET /ministries/1
   # GET /ministries/1.json
   def show
+    @user = current_user
   end
 
   # GET /ministries/new
   def new
     @ministry = Ministry.new
+    @user = current_user
   end
 
   # GET /ministries/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /ministries
   # POST /ministries.json
   def create
     @ministry = Ministry.new(ministry_params)
+    @user = current_user
 
     respond_to do |format|
       if @ministry.save
-        format.html { redirect_to @ministry, notice: 'Ministry was successfully created.' }
+        format.html { redirect_to ministries_path, notice: 'Ministry was successfully created.' }
         format.json { render :show, status: :created, location: @ministry }
       else
         format.html { render :new }

@@ -53,11 +53,11 @@
           <li class="active">
             <%= link_to '
               <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>'.html_safe, users_show_path %>
+              <p>Dashboard</p>'.html_safe, current_user %>
           </li>
           <li>
             <a data-toggle="collapse" href="#pagesExamples">
-              <i class="material-icons">add</i>
+              <i class="material-icons">people</i>
               <p>Ministries I Follow
                 <b class="caret"></b>
               </p>
@@ -89,10 +89,10 @@
                   </a>
                 </li>
                 <li>
-                  <a href="./pages/register.html">
+                  <%= link_to '
                     <span class="sidebar-mini">A</span>
-                    <span class="sidebar-normal">See All Ministries</span>
-                  </a>
+                    <span class="sidebar-normal">See All Ministries</span>'.html_safe, 
+                    ministries_path %>
                 </li>
               </ul>
             </div>
