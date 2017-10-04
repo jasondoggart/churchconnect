@@ -1,77 +1,40 @@
-<div class="wrapper">
-  <%= render 'layouts/sidebar' %>
-  <div class="main-panel">
-    <%= render 'layouts/dashboard_nav' %>
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header" data-background-color="green">
-                <h4 class="card-title">
-                  Ministries<br />
-                  <%= link_to '<p class="category">Add New</p>'.html_safe, new_ministry_path %>
-                </h4>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header" data-background-color="green">
+        <h4 class="card-title">
+          Ministries<br />
+          <%= link_to '<p class="category">Add New</p>'.html_safe, new_ministry_path %>
+        </h4>
+      </div>
+      <div class="card-content">
+        <% @ministries.each do |ministry| %>
+          <div class="col-md-4">
+            <div class="card card-product">
+              <div class="card-image" data-header-animation="false">
+                <%= link_to image_tag('card-2.jpeg'), ministry_path(ministry), class: 'img' %>
               </div>
-              <div class="card-content">
-                <% @ministries.each do |ministry| %>
-                  <div class="col-md-4">
-                    <div class="card card-product">
-                      <div class="card-image" data-header-animation="false">
-                        <%= link_to image_tag('card-2.jpeg'), ministry_path(ministry), class: 'img' %>
-                      </div>
-                      <div class="card-content")>
-                        <h4 class="card-title">
-                          <%= link_to ministry.name, ministry_path(ministry) %>
-                        </h4>
-                        <div class="card-description">
-                          <%= ministry.description %>
-                        </div>
-                      </div>
-                      <div class="card-footer">
-                        <div class="stats">
-                          <p class="category">
-                            <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_ministry_path(ministry) %>
-                            <%= link_to '<i class="material-icons">delete</i>'.html_safe, ministry, method: :delete, data: { confirm: 'Are you sure?' } %>
-                        </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+              <div class="card-content")>
+                <h4 class="card-title">
+                  <%= link_to ministry.name, ministry_path(ministry) %>
+                </h4>
+                <div class="card-description">
+                  <%= ministry.description %>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <p class="category">
+                    <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_ministry_path(ministry) %>
+                    <%= link_to '<i class="material-icons">delete</i>'.html_safe, ministry, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<h1>Ministries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ministries.each do |ministry| %>
-      <tr>
-        <td><%= ministry.name %></td>
-        <td><%= ministry.description %></td>
-        <td><%= link_to 'Show', ministry %></td>
-        <td><%= link_to 'Edit', edit_ministry_path(ministry) %></td>
-        <td><%= link_to 'Destroy', ministry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ministry', new_ministry_path %>

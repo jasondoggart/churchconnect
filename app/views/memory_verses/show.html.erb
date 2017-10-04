@@ -1,35 +1,25 @@
-<div class="wrapper">
-  <%= render 'layouts/sidebar' %>
-  <div class="main-panel">
-    <%= render 'layouts/dashboard_nav' %>
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header" data-background-color="green">
-                <h4 class="card-title">
-                  Memory Verse - <%= @memory_verse.verse_date.strftime("%B %e, %Y") %><br />
-                  <%= link_to '<p class="category">See all</p>'.html_safe, memory_verses_path %>
-                </h4>
-              </div>
-              <div class="card-content">
-                <blockquote>
-                  <p>
-                    <%= @memory_verse.verse %>
-                  </p>
-                  <small>
-                    <%= @memory_verse.reference %>
-                  </small>
-                </blockquote>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <p class="category"><%= link_to '<i class="material-icons">edit</i> Edit'.html_safe, edit_memory_verse_path(@memory_verse) %></p>
-                </div>
-              </div>
-            </div>
-          </div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header" data-background-color="green">
+        <h4 class="card-title">
+          Memory Verse - <%= @memory_verse.verse_date.strftime("%B %e, %Y") %><br />
+          <%= link_to '<p class="category">See all</p>'.html_safe, memory_verses_path %>
+        </h4>
+      </div>
+      <div class="card-content">
+        <blockquote>
+          <p>
+            <%= @memory_verse.verse %>
+          </p>
+          <small>
+            <%= @memory_verse.reference %>
+          </small>
+        </blockquote>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <p class="category"><%= link_to '<i class="material-icons">edit</i> Edit'.html_safe, edit_memory_verse_path(@memory_verse) %></p>
         </div>
       </div>
     </div>
