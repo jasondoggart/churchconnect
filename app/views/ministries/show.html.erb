@@ -11,7 +11,11 @@
         <p class="description">
           <%= @ministry.description %>
         </p>
-        <%= link_to 'Follow', '#', class: 'btn btn-rose btn-round' %>
+        <% if current_user.following?(@ministry) %>
+          <%= render 'unfollow' %>
+        <% else %>
+          <%= render 'follow' %>
+        <% end %>
       </div>
     </div>
   </div>
