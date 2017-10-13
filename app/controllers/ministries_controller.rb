@@ -17,18 +17,21 @@ class MinistriesController < ApplicationController
   # GET /ministries/new
   def new
     @ministry = Ministry.new
+    authorize @ministry
     @user = current_user
   end
 
   # GET /ministries/1/edit
   def edit
     @user = current_user
+    authorize @ministry
   end
 
   # POST /ministries
   # POST /ministries.json
   def create
     @ministry = Ministry.new(ministry_params)
+    authorize @ministry
     @user = current_user
 
     respond_to do |format|
@@ -45,6 +48,7 @@ class MinistriesController < ApplicationController
   # PATCH/PUT /ministries/1
   # PATCH/PUT /ministries/1.json
   def update
+    authorize @ministry
     respond_to do |format|
       if @ministry.update(ministry_params)
         format.html { redirect_to @ministry, notice: 'Ministry was successfully updated.' }
@@ -59,6 +63,7 @@ class MinistriesController < ApplicationController
   # DELETE /ministries/1
   # DELETE /ministries/1.json
   def destroy
+    authorize @ministry
     @ministry.destroy
     respond_to do |format|
       format.html { redirect_to ministries_url, notice: 'Ministry was successfully destroyed.' }
@@ -76,4 +81,10 @@ class MinistriesController < ApplicationController
     def ministry_params
       params.require(:ministry).permit(:name, :description)
     end
+
+    def user_not_authorized
+      flash[:info] = "Sorry, only an administrator can perform that task."
+      redirect_to ministries_path
+    end
+
 end

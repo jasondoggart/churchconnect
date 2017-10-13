@@ -22,14 +22,16 @@
                   <%= ministry.description %>
                 </div>
               </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <p class="category">
-                    <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_ministry_path(ministry) %>
-                    <%= link_to '<i class="material-icons">delete</i>'.html_safe, ministry, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
+              <% if policy(ministry).update? %>
+                <div class="card-footer">
+                  <div class="stats">
+                    <p class="category">
+                      <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_ministry_path(ministry) %>
+                      <%= link_to '<i class="material-icons">delete</i>'.html_safe, ministry, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             </div>
           </div>
         <% end %>

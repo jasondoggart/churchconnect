@@ -1,6 +1,4 @@
 class UserMinistriesController < ApplicationController
-  before_action :set_user_ministry, only: [:show, :edit, :update, :destroy]
-
 
   # POST /user_ministries
   # POST /user_ministries.json
@@ -24,14 +22,4 @@ class UserMinistriesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_ministry
-      @user_ministry = UserMinistry.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_ministry_params
-      params.require(:user_ministry).permit(:user_id, :ministry_id)
-    end
 end

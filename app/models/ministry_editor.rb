@@ -1,0 +1,4 @@
+class MinistryEditor < ApplicationRecord
+  belongs_to :ministry
+  belongs_to :user
+end
