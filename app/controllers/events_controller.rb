@@ -25,15 +25,16 @@ class EventsController < ApplicationController
   def edit
     @user = current_user
     @ministries = Ministry.all
+    authorize @event
   end
 
   # POST /events
   # POST /events.json
   def create
-    # @ministry = Ministry.find_by(id: (event_params[:ministry_id]))
     @event = Event.new(event_params)
     @ministries = Ministry.all
     @user = current_user
+    authorize @event
 
     respond_to do |format|
       if @event.save
@@ -49,6 +50,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    authorize @event
     @user = current_user
     @ministry = Ministry.all
     respond_to do |format|
@@ -65,6 +67,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    authorize @event
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
@@ -81,5 +84,10 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:name, :description, :start_time, :end_time, :ministry_id)
+    end
+
+    def user_not_authorized
+      flash[:info] = "Sorry, only an administrator or authorized editor can do that"
+      redirect_to ministries_path
     end
 end

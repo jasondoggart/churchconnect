@@ -46,17 +46,20 @@
                   <%= link_to event.name, event_path(event) %>
                 </h4>
                 <div class="card-description">
+                  <h5>Will insert dates and times here</h5>
                   <%= event.description %>
                 </div>
               </div>
-              <div class="card-footer">
-                <div class="price">
-                  <h4>Will insert dates here</h4>
+              <% if policy(event).update? %>
+                <div class="card-footer">
+                  <div class="stats">
+                    <p class="category">
+                      <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_event_path(event) %>
+                      <%= link_to '<i class="material-icons">delete</i>'.html_safe, event, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </p>
+                  </div>
                 </div>
-                <div class="stats pull-right">
-                  <p class="category"><i class="material-icons">place</i><%= @ministry.name %></p>
-                </div>
-              </div>
+              <% end %>
             </div>
           </div>
         <% end %>

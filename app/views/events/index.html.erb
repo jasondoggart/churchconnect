@@ -22,14 +22,16 @@
                   <%= event.description %>
                 </div>
               </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <p class="category">
-                    <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_event_path(event) %>
-                    <%= link_to '<i class="material-icons">delete</i>'.html_safe, event, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
+              <% if policy(event).update? %>
+                <div class="card-footer">
+                  <div class="stats">
+                    <p class="category">
+                      <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_event_path(event) %>
+                      <%= link_to '<i class="material-icons">delete</i>'.html_safe, event, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             </div>
           </div>
         <% end %>
