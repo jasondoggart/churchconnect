@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-icon" data-background-color="orange">
+        <i class="material-icons">notifications</i>
+      </div>
+      <div class="card-content">
+        <h4 class="card-title">Latest Announcements</h4>
+        <div class="table-responsive">
+          <table class="table table-shopping">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="th-description">Announcement</th>
+                <th class="th-description">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.followed_announcements.each do |ann| %>
+                <tr>
+                  <td>
+                    <div class="img-container">
+                      <%= image_tag('card-2.jpg') %>
+                    </div>
+                  </td>
+                  <td>
+                    <b><%= ann.subject %></b>
+                  </td>
+                  <td>
+                    <%= ann.text %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <p class="category"><i class="material-icons">arrow_forward</i><a href='#'> See more</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

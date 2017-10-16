@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :events
   resources :ministries
   resources :memory_verses
-  resources :users
 
+  get 'users/show'
   devise_for :users
   devise_scope :user do
     authenticated :user do

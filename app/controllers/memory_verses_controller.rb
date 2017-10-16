@@ -17,12 +17,14 @@ class MemoryVersesController < ApplicationController
   # GET /memory_verses/new
   def new
     @memory_verse = MemoryVerse.new
+    authorize @memory_verse
     @user = current_user
   end
 
   # GET /memory_verses/1/edit
   def edit
     @user = current_user
+    authorize @memory_verse
   end
 
   # POST /memory_verses
@@ -31,6 +33,7 @@ class MemoryVersesController < ApplicationController
   def create
     @user = current_user
     @memory_verse = MemoryVerse.new(memory_verse_params)
+    authorize @memory_verse
 
     respond_to do |format|
       if @memory_verse.save
@@ -46,6 +49,7 @@ class MemoryVersesController < ApplicationController
   # PATCH/PUT /memory_verses/1
   # PATCH/PUT /memory_verses/1.json
   def update
+    authorize @memory_verse
     respond_to do |format|
       if @memory_verse.update(memory_verse_params)
         format.html { redirect_to memory_verses_path, notice: 'Memory verse was successfully updated.' }
@@ -60,6 +64,7 @@ class MemoryVersesController < ApplicationController
   # DELETE /memory_verses/1
   # DELETE /memory_verses/1.json
   def destroy
+    authorize @memory_verse
     @memory_verse.destroy
     respond_to do |format|
       format.html { redirect_to memory_verses_url, notice: 'Memory verse was successfully destroyed.' }
@@ -76,5 +81,10 @@ class MemoryVersesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def memory_verse_params
       params.require(:memory_verse).permit(:verse, :reference, :verse_date)
+    end
+
+    def user_not_authorized
+      flash[:info] = "Sorry, only an administrator can perform that task."
+      redirect_to current_user
     end
 end
