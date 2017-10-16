@@ -4,7 +4,9 @@
       <div class="card-header" data-background-color="green">
         <h4 class="card-title">
           Ministries<br />
-          <%= link_to '<p class="category">Add New</p>'.html_safe, new_ministry_path %>
+          <% if current_user.admin? %>
+            <%= link_to '<p class="category">Add New</p>'.html_safe, new_ministry_path %>
+          <% end %>
         </h4>
       </div>
       <div class="card-content">

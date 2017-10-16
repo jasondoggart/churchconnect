@@ -58,7 +58,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @user.announcements.each do |ann| %>
+              <% @user.followed_announcements.each do |ann| %>
                 <tr>
                   <td>
                     <div class="img-container">
@@ -96,7 +96,7 @@
           Upcoming Events You're Following<br />
           <small><%= link_to 'See all events', '#' %></small>
         </h4>
-        <% @user.events.each do |event| %>
+        <% @user.followed_events.each do |event| %>
           <div class="col-md-4">
             <div class="card card-product">
               <div class="card-image" data-header-animation="false">
@@ -121,8 +121,8 @@
                 </div>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

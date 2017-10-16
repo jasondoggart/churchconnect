@@ -29,7 +29,9 @@
         <h4 class="card-title">
           Upcoming Events<br />
           <p class="category">See all events</p>
-          <%= link_to '<p class="category">Add new</p>'.html_safe, new_event_path %>
+          <% if @ministry.editors.include?(current_user) %>
+            <%= link_to '<p class="category">Add new</p>'.html_safe, new_event_path %>
+          <% end %>
         </h4>
       </div>
       <div class="card-content">
@@ -74,39 +76,33 @@
         <h4 class="card-title">
           Recent Announcements<br />
           <%= link_to '<p class="category">See all Announcements</p>'.html_safe, announcements_path %>
-          <%= link_to '<p class="category">Create New Announcement</p>'.html_safe, new_announcement_path %>
+          <% if @ministry.editors.include?(current_user) %>
+            <%= link_to '<p class="category">Create New Announcement</p>'.html_safe, new_announcement_path %>
+          <% end %>
         </h4>
       </div>
       <div class="card-content">
         <div class="panel-group" id="ministry-announcement-accordion" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="test-heading">
-              <a role="button" data-toggle="collapse" data-parent="#ministry-announcement-accordian" href="#test-announcement-collapse" aria-expanded="true" aria-controls "test-announcement-collapse">
-                <h4 class="panel-title">
-                  Test Announcement<br />
-                  <small>Date</small>
-                  <i class="material-icons">keyboard_arrow_down</i>
-                </h4>
-              </a>
-            </div>
-            <div id="test-announcement-collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="test-heading">
-              <div class="panel-body">
-                Testing to see if this works.
-              </div>
-            </div>
             <% @ministry.announcements.each do |announcement| %>
               <div class="panel-heading" role="tab" id="announcement-heading-<%= announcement.id %>">
                 <a role="button" data-toggle="collapse" data-parent="#ministry-announcement-accordian" href="#announcement-collapse-<%= announcement.id %>" aria-expanded="false" aria-controls "announcement-collapse-<%= announcement.id %>">
                   <h4 class="panel-title">
-                    <%= announcement.subject %><br />
-                    <small><%= announcement.created_at %></small>
+                    <%= announcement.subject %>
+                    <small>
+                      <%= announcement.created_at %><br />
+                      <% if @ministry.editors.include?(current_user) %>
+                        <%= link_to 'edit', edit_announcement_path %> | 
+                        <%= link_to 'remove', announcement, method: :delete, data: { confirm: "Are you sure" } %>
+                      <% end %>
+                    </small>
                     <i class="material-icons">keyboard_arrow_down</i>
                   </h4>
                 </a>
               </div>
               <div id="announcement-collapse-<%= announcement.id %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="announcement-heading-<%= announcement.id %>">
                 <div class="panel-body">
-                  <%= announcement.text %>
+                  <%= announcement.text %><br />
                 </div>
               </div>
             <% end %>
@@ -133,3 +129,6 @@
 </div>
   </div>
 </div>
+<script>
+  $('.collapse').collapse()
+</script>
