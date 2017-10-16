@@ -64,30 +64,12 @@
             </a>
             <div class="collapse" id="pagesExamples">
               <ul class="nav">
-                <li>
-                  <a href="./pages/pricing.html">
-                    <span class="sidebar-mini">F</span>
-                    <span class="sidebar-normal">The Fuse</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./pages/timeline.html">
-                    <span class="sidebar-mini">FS</span>
-                    <span class="sidebar-normal">Flipside</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./pages/login.html">
-                    <span class="sidebar-mini">LK</span>
-                    <span class="sidebar-normal">Lift Kids</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./pages/register.html">
-                    <span class="sidebar-mini">CA</span>
-                    <span class="sidebar-normal">Creative Arts</span>
-                  </a>
-                </li>
+                <% current_user.following.each do |ministry| %>
+                  <li>
+                    <%= link_to "<span class='sidebar-mini'><i class='material-icons'>keyboard_arrow_right</i></span>
+                    <span class='sidebar-normal'>#{ministry.name}</span>".html_safe, ministry_path(ministry) %>
+                  </li>
+                <% end %>
                 <li>
                   <%= link_to '
                     <span class="sidebar-mini">A</span>
