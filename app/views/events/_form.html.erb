@@ -30,7 +30,7 @@
     <div class="col-md-9">
       <div class="form-group label-floating is-empty">
         <label class="control-label"></label>
-        <%= form.text_field :start_time, id: :event_start_time, class: 'form-control datetimepicker', value: Time.zone.now %>
+        <%= form.text_field :start_time, id: :event_start_time, class: 'form-control datetimepicker', value: Time.zone.now, data: {date_format: 'MMMM Do, YYYY, hh:mm A'}  %>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="col-md-9">
       <div class="form-group label-floating is-empty">
         <label class="control-label"></label>
-        <%= form.text_field :end_time, id: :event_end_time, class: 'form-control datetimepicker', value: Time.zone.now %>
+        <%= form.text_field :end_time, id: :event_end_time, class: 'form-control datetimepicker', value: Time.zone.now, data: {date_format: 'MMMM Do, YYYY, hh:mm A'} %>
       </div>
     </div>
   </div>
