@@ -70,7 +70,7 @@ class AnnouncementsController < ApplicationController
     authorize @announcement
     @announcement.destroy
     respond_to do |format|
-      format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
+      format.html { redirect_to users_show_path(current_user), notice: 'Announcement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -88,6 +88,6 @@ class AnnouncementsController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator or authorized editor can do that."
-      redirect_to ministries_path
+      redirect_to users_show_path(current_user)
     end
 end

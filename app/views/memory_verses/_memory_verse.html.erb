@@ -1,0 +1,31 @@
+<div class="col-md-4">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">
+        <b><%= memory_verse.verse_date.strftime("%B %e, %Y") %></b>
+      </h4>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+            <%= memory_verse.verse %>
+            <small>
+              <%= memory_verse.reference %>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% if current_user.admin? %>
+      <div class="card-footer">
+        <div class="stats">
+          <p class="category">
+            <%= link_to 'edit', edit_memory_verse_path(memory_verse) %> | 
+            <%= link_to 'delete', memory_verse, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -85,6 +85,6 @@ class MemoryVersesController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator can perform that task."
-      redirect_to current_user
+      redirect_to users_show_path(current_user)
     end
 end

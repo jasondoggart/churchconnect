@@ -42,8 +42,3 @@ function showNotification(from, align, message){
     });
 }
 
-// Update format of datetimepicker
-$('#event_start_time').datetimepicker(
-  default: False
-  format: 'YYYY-MM-DD HH:mm'
-)

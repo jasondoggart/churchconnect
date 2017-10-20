@@ -1,40 +1,15 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header card-header-icon" data-background-color="blue">
-        <i class="material-icons">event</i>
-      </div>
-      <div class="card-content">
+      <div class="card-header">
         <h4 class="card-title">
           Upcoming Events You're Following<br />
-          <small><%= link_to 'See all events', '#' %></small>
+          <small><%= link_to 'See all events', events_path %></small>
         </h4>
+      </div>
+      <div class="card-content">
         <% @user.followed_events.each do |event| %>
-          <div class="col-md-4">
-            <div class="card card-product">
-              <div class="card-image" data-header-animation="false">
-                <a href="#pablo">
-                  <img class="img" src="<%= image_path('card-2.jpeg') %>">
-                </a>
-              </div>
-              <div class="card-content">
-                <h4 class="card-title">
-                  <%= link_to event.name, event_path(event) %>
-                </h4>
-                <div class="card-description">
-                  <%= event.description %>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="price">
-                  <h4>Event date</h4>
-                </div>
-                <div class="stats pull-right">
-                  <p class="category"><i class="material-icons">place</i>The Fuse</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <%= render partial: 'events/event', object: event %>
         <% end %>
       </div>
     </div>

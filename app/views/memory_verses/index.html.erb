@@ -1,46 +1,16 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header" data-background-color="green">
+      <div class="card-header">
         <h4 class="card-title">
-          Memory Verses<br />
-          <%= link_to '<p class="category">Add New</p>'.html_safe, new_memory_verse_path %>
+          All Memory Verses<br />
+          <% if current_user.admin? %>
+            <%= link_to '<p class="category">Add New</p>'.html_safe, new_memory_verse_path %>
+          <% end %>
         </h4>
       </div>
       <div class="card-content">
-        <% @memory_verses.each do |verse| %>
-          <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">
-                  <%= verse.verse_date.strftime("%B %e, %Y") %>
-                </h4>
-              </div>
-              <div class="card-content">
-                <div class="row">
-                  <div class="col-md-12">
-                    <blockquote>
-                      <p>
-                        <%= verse.verse %>
-                      </p>
-                      <small>
-                        <%= verse.reference %>
-                      </small>
-                    </blockquote>
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="stats">
-                  <p class="category">
-                    <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_memory_verse_path(verse) %>
-                    <%= link_to '<i class="material-icons">delete</i>'.html_safe, verse, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render @memory_verses %>
       </div>
     </div>
   </div>

@@ -1,43 +1,50 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header card-header-icon" data-background-color="orange">
-        <i class="material-icons">notifications</i>
+      <div class="card-header">
+        <h4 class="card-title">
+          Latest Announcements
+          <p class="category">
+            <%= link_to 'see all announcements', announcements_path %>
+          </p>
+        </h4>
       </div>
       <div class="card-content">
-        <h4 class="card-title">Latest Announcements</h4>
         <div class="table-responsive">
           <table class="table table-shopping">
             <thead>
               <tr>
-                <th></th>
                 <th class="th-description">Announcement</th>
                 <th class="th-description">Details</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <% @user.followed_announcements.each do |ann| %>
+              <% if @user.followed_announcements.count == 0 %>
+                <tr>
+                  <td>No new announcements in ministries you follow</td>
+                  <td></td>
+                  <td></td>
+                <% end %>
+                </tr>
+              <% @user.followed_announcements.each do |announcement| %>
                 <tr>
                   <td>
-                    <div class="img-container">
-                      <%= image_tag('card-2.jpg') %>
-                    </div>
+                    <b><%= announcement.subject %></b>
                   </td>
                   <td>
-                    <b><%= ann.subject %></b>
+                    <%= announcement.text %>
                   </td>
                   <td>
-                    <%= ann.text %>
+                    <% if policy(announcement).update? %>
+                      <%= link_to 'edit', edit_announcement_path(announcement) %> | 
+                      <%= link_to 'delete', announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="stats">
-          <p class="category"><i class="material-icons">arrow_forward</i><a href='#'> See more</a></p>
         </div>
       </div>
     </div>

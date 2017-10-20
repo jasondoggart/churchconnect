@@ -89,6 +89,6 @@ class EventsController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator or authorized editor can do that"
-      redirect_to ministries_path
+      redirect_to users_show_path(current_user)
     end
 end

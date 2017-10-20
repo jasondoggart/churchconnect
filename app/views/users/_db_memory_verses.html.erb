@@ -1,42 +1,24 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header card-header-icon" data-background-color="green">
-        <i class="material-icons">bookmark_border</i>
-      </div>
-      <div class="card-content">
+      <div class="card-header">
         <h4 class="card-title">
           Memory Verses</br>
-          <%= link_to '<small>See them all</small>'.html_safe, memory_verses_path %>
+          <small><%= link_to 'See them all'.html_safe, memory_verses_path %></small>
         </h4>
+      </div>
+      <div class="card-content">
         <div class="row">
           <% @memory_verses.limit(3).each do |verse| %>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-header" data-background-color="green">
-                  <h4 class="card-title">
-                    <%= verse.verse_date.strftime('%B %e, %Y') %><br />
-                  </h4>
-                </div>
-                <div class="card-content">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <blockquote>
-                        <p>
-                          <%= verse.verse %>
-                        </p>
-                        <small>
-                          <%= verse.reference %>
-                        </small>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <%= render partial: 'memory_verses/memory_verse', object: verse %>
           <% end %>
         </div>
       </div>
+      <% if current_user.admin? %>
+        <div class="card-footer">
+          <%= link_to 'add new', new_memory_verse_path %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

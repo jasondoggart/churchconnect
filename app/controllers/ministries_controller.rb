@@ -84,7 +84,7 @@ class MinistriesController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator can perform that task."
-      redirect_to ministries_path
+      redirect_to users_show_path(current_user)
     end
 
 end
