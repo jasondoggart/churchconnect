@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <div class="card card-product">
+  <div class="card card-product card-plain">
     <div class="card-image" data-header-animation="false">
       <%= link_to image_tag('card-2.jpeg'), event_path(event), class: 'img' %>
     </div>
@@ -13,7 +13,7 @@
     </div>
     <% if policy(event).update? %>
       <div class="card-footer">
-        <div class="stats">
+        <div class="stats pull-right">
           <p class="category">
             <%= link_to 'edit', edit_event_path(event) %> | 
             <%= link_to 'delete', event, method: :delete, data: { confirm: 'Are you sure?' } %>

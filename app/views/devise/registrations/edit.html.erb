@@ -1,43 +1,117 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h3>Your Profile
+          <p class="category">
+            update the fields below to help us stay in touch with you
+          </p>
+        </h3>
+      </div>
+      <div class="card-content">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group label-floating">
+                <label class="control-label">first name</label>
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group label-floating">
+                <label class="control-label">last name</label>
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group label-floating">
+                <label class="control-label">email</label>
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group label-floating">
+                <label class="control-label">mobile phone number</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group label-floating">
+                <label class="control-label">street address</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group label-floating">
+                <label class="control-label">city</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group label-floating">
+                <label class="control-label">province</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group label-floating">
+                <label class="control-label">postal code</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <h5>Password change
+            <p class="category">
+              fill in below only if you want to change your password
+            </p>
+          </h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group label-floating">
+                <label class="control-label">new password</label>
+                <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group label-floating">
+                <label class="control-label">enter new password again</label>
+                <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+              </div>
+            </div>
+          </div>
+          <h5>Confirm changes
+            <p class="category">
+              enter your current password below to confirm your changes
+            </p>
+          </h5>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group label-floating">
+                <label class="control-label">current password</label>
+                <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
+              </div>
+            </div>
+          </div>
+          <%= f.submit 'Update profile', class: 'btn btn-rose pull-right' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="col-md-4">
+    <div class="card card-profile">
+      <div class="card-avatar">
+        <%= image_tag('faces/marc.jpg') %>
+      </div>
+      <div class="card-content">
+        <a href="#" class="btn btn-rose btn-round">Update picture</a>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

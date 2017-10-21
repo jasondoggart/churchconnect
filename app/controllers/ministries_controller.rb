@@ -36,7 +36,7 @@ class MinistriesController < ApplicationController
 
     respond_to do |format|
       if @ministry.save
-        format.html { redirect_to ministries_path, notice: 'Ministry was successfully created.' }
+        format.html { redirect_to users_show_path(current_user), notice: 'Ministry was successfully created.' }
         format.json { render :show, status: :created, location: @ministry }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class MinistriesController < ApplicationController
     authorize @ministry
     respond_to do |format|
       if @ministry.update(ministry_params)
-        format.html { redirect_to @ministry, notice: 'Ministry was successfully updated.' }
+        format.html { redirect_to users_show_path(current_user), notice: 'Ministry was successfully updated.' }
         format.json { render :show, status: :ok, location: @ministry }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class MinistriesController < ApplicationController
     authorize @ministry
     @ministry.destroy
     respond_to do |format|
-      format.html { redirect_to ministries_url, notice: 'Ministry was successfully destroyed.' }
+      format.html { redirect_to users_show_path(current_user), notice: 'Ministry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

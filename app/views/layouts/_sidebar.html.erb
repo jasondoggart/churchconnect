@@ -28,10 +28,11 @@
             <div class="collapse" id="collapseExample">
               <ul class="nav">
                 <li>
-                  <a href="#">
+                  <%= link_to '
                     <span class="sidebar-mini"><i class="material-icons">account_circle</i></span>
-                    <span class="sidebar-normal">My Profile</span>
-                  </a>
+                    <span class="sidebar-normal">My Profile</span>'.html_safe, 
+                    edit_user_registration_path
+                  %>
                 </li>
                 <li>
                   <a href="#">
