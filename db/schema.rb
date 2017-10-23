@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013165902) do
+ActiveRecord::Schema.define(version: 20171023163138) do
 
   create_table "announcements", force: :cascade do |t|
     t.string "subject"
@@ -83,6 +83,11 @@ ActiveRecord::Schema.define(version: 20171013165902) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "admin"
+    t.string "cellphone"
+    t.string "street_address"
+    t.string "city"
+    t.string "province"
+    t.string "postal_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

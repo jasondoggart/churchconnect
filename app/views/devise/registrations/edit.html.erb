@@ -35,7 +35,7 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">mobile phone number</label>
-                <input type="text" class="form-control">
+                <%= f.text_field :cellphone, class: 'form-control' %>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
             <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">street address</label>
-                <input type="text" class="form-control">
+                <%= f.text_field :street_address, class: 'form-control' %>
               </div>
             </div>
           </div>
@@ -51,19 +51,19 @@
             <div class="col-md-4">
               <div class="form-group label-floating">
                 <label class="control-label">city</label>
-                <input type="text" class="form-control">
+                <%= f.text_field :city, class: 'form-control' %>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group label-floating">
                 <label class="control-label">province</label>
-                <input type="text" class="form-control">
+                <%= f.text_field :province, class: 'form-control' %>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group label-floating">
                 <label class="control-label">postal code</label>
-                <input type="text" class="form-control">
+                <%= f.text_field :postal_code, class: 'form-control' %>
               </div>
             </div>
           </div>
