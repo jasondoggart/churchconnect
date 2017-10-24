@@ -3,15 +3,13 @@
 one:
   name: MyString
   description: MyString
-  date: 2017-09-28 09:44:32
   start_time: 2017-09-28 09:44:32
   end_time: 2017-09-28 09:44:32
-  ministries: one
+  ministry: one
 
 two:
   name: MyString
   description: MyString
-  date: 2017-09-28 09:44:32
   start_time: 2017-09-28 09:44:32
   end_time: 2017-09-28 09:44:32
-  ministries: two
+  ministry: two

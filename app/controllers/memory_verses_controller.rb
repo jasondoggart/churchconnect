@@ -1,4 +1,5 @@
 class MemoryVersesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_memory_verse, only: [:show, :edit, :update, :destroy]
 
   # GET /memory_verses

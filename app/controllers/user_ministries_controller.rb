@@ -1,4 +1,5 @@
 class UserMinistriesController < ApplicationController
+  before_action :authenticate_user!
 
   # POST /user_ministries
   # POST /user_ministries.json
