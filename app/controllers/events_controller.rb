@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to users_show_path(current_user), notice: 'Event was successfully created.' }
+        format.html { redirect_to users_path(current_user), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
     @ministry = Ministry.all
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to users_show_path(current_user), notice: 'Event was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class EventsController < ApplicationController
     authorize @event
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to users_show_path(current_user), notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -89,6 +89,6 @@ class EventsController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator or authorized editor can do that"
-      redirect_to users_show_path(current_user)
+      redirect_to user_path(current_user)
     end
 end

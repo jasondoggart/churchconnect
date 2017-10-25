@@ -38,7 +38,7 @@ class MemoryVersesController < ApplicationController
 
     respond_to do |format|
       if @memory_verse.save
-        format.html { redirect_to users_show_path(current_user), notice: 'Memory verse was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Memory verse was successfully created.' }
         format.json { render :show, status: :created, location: @memory_verse }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class MemoryVersesController < ApplicationController
     authorize @memory_verse
     respond_to do |format|
       if @memory_verse.update(memory_verse_params)
-        format.html { redirect_to users_show_path(current_user), notice: 'Memory verse was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Memory verse was successfully updated.' }
         format.json { render :show, status: :ok, location: @memory_verse }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class MemoryVersesController < ApplicationController
     authorize @memory_verse
     @memory_verse.destroy
     respond_to do |format|
-      format.html { redirect_to users_show_path(current_user), notice: 'Memory verse was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: 'Memory verse was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -86,6 +86,6 @@ class MemoryVersesController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator can perform that task."
-      redirect_to users_show_path(current_user)
+      redirect_to user_path(current_user)
     end
 end
