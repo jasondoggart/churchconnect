@@ -27,7 +27,7 @@
                   <td></td>
                 <% end %>
                 </tr>
-              <% @user.followed_announcements.each do |announcement| %>
+              <% @user.followed_announcements.take(5).each do |announcement| %>
                 <tr>
                   <td>
                     <b><%= announcement.subject %></b>

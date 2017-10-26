@@ -52,7 +52,7 @@
                       <div class="description">
                         <h4 class="info-title">We're Glad You're Here!</h4>
                         <p class="description">
-                          Click <%= link_to 'here', new_user_registration_path %> to sign up!
+                          <%= link_to '<button class="btn btn-rose btn-round">Click here to sign up</button>'.html_safe, new_user_registration_path %>
                         </p>
                       </div>
                     </div>
@@ -64,7 +64,7 @@
                       <div class="description">
                         <h4 class="info-title">We're Glad You're Back!</h4>
                         <p class="description">
-                          Click <%= link_to 'here', current_user %> to go to your dashboard
+                          <%= link_to '<button class="btn btn-rose btn-round">Click here for your dashboard</button>'.html_safe, current_user %>
                         </p>
                       </div>
                     </div>
