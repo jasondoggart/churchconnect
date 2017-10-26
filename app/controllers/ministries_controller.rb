@@ -37,7 +37,7 @@ class MinistriesController < ApplicationController
 
     respond_to do |format|
       if @ministry.save
-        format.html { redirect_to user_path(current_user), notice: 'Ministry was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Ministry was successfully created.' }
         format.json { render :show, status: :created, location: @ministry }
       else
         format.html { render :new }
@@ -85,7 +85,7 @@ class MinistriesController < ApplicationController
 
     def user_not_authorized
       flash[:info] = "Sorry, only an administrator can perform that task."
-      redirect_to user_path(current_user)
+      redirect_to current_user
     end
 
 end
