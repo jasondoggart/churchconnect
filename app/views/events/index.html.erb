@@ -13,6 +13,9 @@
                 </h4>
               </div>
               <div class="card-content">
+                <div class="row">
+                  <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
+                </div>
                 <%= render @events %>
               </div>
             </div>
