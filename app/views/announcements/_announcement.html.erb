@@ -1,0 +1,23 @@
+<div class="col-md-4">
+  <div class="card card-product">
+    <div class="card-image" data-header-animation="false">
+      <%= link_to image_tag('card-2.jpeg'), announcement_path(announcement), class: 'img' %>
+    </div>
+    <div class="card-content")>
+      <h4 class="card-title">
+        <%= link_to announcement.subject, announcement_path(announcement) %>
+      </h4>
+      <div class="card-description">
+        <%= announcement.text %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="stats">
+        <p class="category">
+          <%= link_to 'edit', edit_announcement_path(announcement) %> | 
+          <%= link_to 'delete', announcement, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.all
+    @announcements = Announcement.paginate(:page => params[:page], :per_page => 6)
     @user = current_user
   end
 
