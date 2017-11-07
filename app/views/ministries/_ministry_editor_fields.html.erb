@@ -1,0 +1,12 @@
+<div class='nested-fields'>
+  <%= f.hidden_field :ministry_id, value: @ministry.id %>
+  <div class="row">
+    <label class="col-md-3 label-on-left">Ministry Editor</label>
+    <div class="col-md-7">
+      <div class="form-group label-floating is-empty">
+        <%= f.collection_select :user_id, @users, :id, :full_name, {prompt: 'Choose an editor'}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <%= link_to_remove_association "remove editor", f, class: 'col-md-2 label-on-right' %>
+  </div>
+</div>

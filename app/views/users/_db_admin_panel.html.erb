@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          Admin Tools
+        </h3>
+      </div>
+      <div class="card-content">
+        <div class="col-md-4">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to 'Create new event', new_event_path %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to 'Create new announcement', new_announcement_path %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to 'Create new opportunity to serve', '#' %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to 'Create new ministry', new_ministry_path %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to 'Create new user', '#' %>
+                </td>
+              </tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="rose">
+              <i class="material-icons">account_circle</i>
+            </div>
+            <div class="card-content">
+              <p class="category">Users</p>
+              <h3 class="card-title"><%= User.count %></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats pull-right">
+                See them all
+              </div>
+            </div>
+          </div>
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="rose">
+              <i class="material-icons">announcement</i>
+            </div>
+            <div class="card-content">
+              <p class="category">Announcements</p>
+              <h3 class="card-title"><%= Announcement.count %></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats pull-right">
+                <%= link_to 'see them all', announcements_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="rose">
+              <i class="material-icons">event</i>
+            </div>
+            <div class="card-content">
+              <p class="category">Events</p>
+              <h3 class="card-title"><%= Event.count %></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats pull-right">
+                <%= link_to 'see them all', events_path %>
+              </div>
+            </div>
+          </div>
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="rose">
+              <i class="material-icons">group</i>
+            </div>
+            <div class="card-content">
+              <p class="category">Ministries</p>
+              <h3 class="card-title"><%= Ministry.count %></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats pull-right">
+                <%= link_to 'see them all', ministries_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

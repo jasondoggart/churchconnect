@@ -4,6 +4,9 @@
     <%= render 'layouts/dashboard_nav' %>
     <div class="content">
       <div class="container-fluid">
+        <% if current_user.admin? %>
+          <%= render 'db_admin_panel' %>
+        <% end %>
         <%= render 'db_memory_verses' %>
         <%= render 'db_announcements' %>
         <%= render 'db_events' %>

@@ -5,7 +5,7 @@
         <h3 class="card-title">
           Latest Announcements
           <p class="category">
-            <%= link_to 'see all announcements', announcements_path %>
+            <%= link_to 'See all announcements', announcements_path %>
           </p>
         </h3>
       </div>
@@ -47,6 +47,10 @@
           </table>
         </div>
       </div>
-    </div>
+      <% if current_user.admin? %>
+        <div class="card-footer">
+          <%= link_to 'add new announcement', new_announcement_path %>
+        </div>
+      <% end %>
   </div>
 </div>

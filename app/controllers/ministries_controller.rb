@@ -17,7 +17,9 @@ class MinistriesController < ApplicationController
 
   # GET /ministries/new
   def new
+    @users = User.all
     @ministry = Ministry.new
+    @ministry_editor = @ministry.ministry_editors.build
     authorize @ministry
     @user = current_user
   end
@@ -25,6 +27,7 @@ class MinistriesController < ApplicationController
   # GET /ministries/1/edit
   def edit
     @user = current_user
+    @users = User.all
     authorize @ministry
   end
 
@@ -34,6 +37,7 @@ class MinistriesController < ApplicationController
     @ministry = Ministry.new(ministry_params)
     authorize @ministry
     @user = current_user
+    @users = User.all
 
     respond_to do |format|
       if @ministry.save
@@ -49,6 +53,7 @@ class MinistriesController < ApplicationController
   # PATCH/PUT /ministries/1
   # PATCH/PUT /ministries/1.json
   def update
+    @users = User.all
     authorize @ministry
     respond_to do |format|
       if @ministry.update(ministry_params)
@@ -80,7 +85,7 @@ class MinistriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ministry_params
-      params.require(:ministry).permit(:name, :description)
+      params.require(:ministry).permit(:name, :description, ministry_editors_attributes: [:id, :user_id, :ministry_id, :_destroy])
     end
 
     def user_not_authorized

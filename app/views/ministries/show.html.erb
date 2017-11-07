@@ -24,6 +24,9 @@
                     <%= render 'follow' %>
                   <% end %>
                 </div>
+                <% if current_user.admin? %>
+                  <%= link_to 'Update Ministry', edit_ministry_path(@ministry) %>
+                <% end %>
               </div>
             </div>
           </div>

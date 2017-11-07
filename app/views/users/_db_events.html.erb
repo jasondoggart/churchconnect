@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">
-          Upcoming Events You're Following<br />
+          Newest Events for Ministries You Follow<br />
           <p class="category"><%= link_to 'See all events', events_path %></p>
         </h3>
       </div>
@@ -12,6 +12,11 @@
           <%= render partial: 'events/event', object: event %>
         <% end %>
       </div>
+      <% if current_user.admin? %>
+        <div class="card-footer">
+          <%= link_to 'add new event', new_event_path %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
