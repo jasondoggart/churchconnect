@@ -12,6 +12,7 @@
 User.create!(first_name: "Jason", last_name: "Doggart", email: "jasondoggart@gmail.com", password: "password", password_confirmation: "password", admin: true)
 User.create!(first_name: "Jeremy", last_name: "Bates", email: "jbates@gtburlington.org", password: "password", password_confirmation: "password", admin: true)
 User.create!(first_name: "Kevin", last_name: "Shepherd", email: "kshepherd@gtburlington.org", password: "password", password_confirmation: "password", admin: true)
+User.create!(first_name: "Thomas", last_name: "Hamilton", email: "thomasjbhamilton@gmail.com", password: "password", password_confirmation: "password", admin: true)
 
 
 # Create 100 regular users
