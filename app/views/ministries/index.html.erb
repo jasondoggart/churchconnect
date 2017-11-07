@@ -16,33 +16,10 @@
                 </h4>
               </div>
               <div class="card-content">
-                <% @ministries.each do |ministry| %>
-                  <div class="col-md-4">
-                    <div class="card card-product">
-                      <div class="card-image" data-header-animation="false">
-                        <%= link_to image_tag('card-2.jpeg'), ministry_path(ministry), class: 'img' %>
-                      </div>
-                      <div class="card-content")>
-                        <h4 class="card-title">
-                          <%= link_to ministry.name, ministry_path(ministry) %>
-                        </h4>
-                        <div class="card-description">
-                          <%= ministry.description %>
-                        </div>
-                      </div>
-                      <% if policy(ministry).update? %>
-                        <div class="card-footer">
-                          <div class="stats">
-                            <p class="category">
-                              <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_ministry_path(ministry) %>
-                              <%= link_to '<i class="material-icons">delete</i>'.html_safe, ministry, method: :delete, data: { confirm: 'Are you sure?' } %>
-                            </p>
-                          </div>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
+                <div class="row">
+                  <%= will_paginate @ministries, renderer: BootstrapPagination::Rails %>
+                </div>
+                <%= render @ministries %>
               </div>
             </div>
           </div>

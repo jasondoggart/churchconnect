@@ -5,7 +5,7 @@ class MinistriesController < ApplicationController
   # GET /ministries
   # GET /ministries.json
   def index
-    @ministries = Ministry.all
+    @ministries = Ministry.paginate(:page => params[:page], :per_page => 6)
     @user = current_user
   end
 
